@@ -5,7 +5,6 @@ tags: [BITSCTF, pwn]
 description: "This is the write up for Cider Vault chall - BITSCTF contest"
 ---
 
-# Cider vault - BITSCTF Writeups
 > - OTP "The Storybook Workshop keeps magical story cards in a fragile old vault. Caretakers can create cards, write words, read chapters, merge pages, and ring the moon bell."
 > - Category: Pwn
 > - Author: Woody Nguyen

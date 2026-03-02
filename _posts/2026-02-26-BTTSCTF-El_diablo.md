@@ -5,8 +5,6 @@ tags: [BITSCTF, reverse]
 description: "This is the write up for El Diablo chall - BITSCTF contest"
 ---
 
-# Diablo — Reverse Engineering CTF Writeup (BITSCTF)
-
 ## Challenge Info
 
 | Field | Details |

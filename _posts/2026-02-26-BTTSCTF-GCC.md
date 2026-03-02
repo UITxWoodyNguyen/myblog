@@ -5,7 +5,6 @@ tags: [BITSCTF, reverse]
 description: "This is the write up for GCC chall - BITSCTF contest"
 ---
 
-# GCC (Ghost C Compiler) - BITSCTF Writeups
 > - Category: Reverse Engineering
 > - Author: Woody Nguyen
 

@@ -5,7 +5,6 @@ tags: [BITSCTF, pwn]
 description: "This is the write up for Orbital Relay chall - BITSCTF contest"
 ---
 
-# Orbital Relay - BITSCTF Writeups
 > - Category: Pwn
 > - Author: Woody Nguyen
 

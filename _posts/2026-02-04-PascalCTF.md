@@ -5,7 +5,6 @@ tags: [PascalCTF, web, pwn, crypto]
 description: "My team's write up for PascalCTF contest"
 ---
 
-# PascalCTF Writeups
 ###### Author: w00di3nqxy3n - team UIT.k0dunqtool
 
 ## Table of Contents
