@@ -28,11 +28,13 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-paginate
 
 # ============================================================
-# Pagination (manual, no plugin needed)
+# Pagination
 # ============================================================
 paginate: 10
+paginate_path: "/page/:num/"
 
 # ============================================================
 # Collections & Defaults

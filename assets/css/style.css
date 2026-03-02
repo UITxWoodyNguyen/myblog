@@ -479,6 +479,51 @@ img {
 }
 
 /* ============================================================
+   Pagination
+   ============================================================ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.pagination-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+}
+
+.pagination-link:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--hover);
+  opacity: 1;
+}
+
+.pagination-link.disabled {
+  color: var(--text-secondary);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.pagination-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
    Post Full (Single Post Page)
    ============================================================ */
 .post-full {
