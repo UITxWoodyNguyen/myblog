@@ -12,7 +12,10 @@ This blog is where I share my thoughts on **programming**, **technology**, **com
 
 ### 🔗 Find me on
 
-[![github](https://img.shields.io/badge/github-UITxWoodyNguyen-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/UITxWoodyNguyen) [![hackmd](https://img.shields.io/badge/hackmd-thanhnguyne2403-9c27b0?style=for-the-badge&logo=markdown&logoColor=white)](https://hackmd.io/@thanhnguyne2403) [![codeforces](https://img.shields.io/badge/codeforces-Ronnied0734-ff8c00?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/Ronnied0734) [![vnoi](https://img.shields.io/badge/old_vnoi_account-thanhnguyen07-AA0000?style=for-the-badge&logo=codeforces&logoColor=white)](https://oj.vnoi.info/user/thanhnguyen07)
+[![github](https://img.shields.io/badge/github-UITxWoodyNguyen-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/UITxWoodyNguyen) 
+[![hackmd](https://img.shields.io/badge/hackmd-thanhnguyne2403-9c27b0?style=for-the-badge&logo=markdown&logoColor=white)](https://hackmd.io/@thanhnguyne2403) 
+[![codeforces](https://img.shields.io/badge/codeforces-Ronnied0734-ff8c00?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/Ronnied0734) 
+[![vnoi](https://img.shields.io/badge/old_vnoi_account-thanhnguyen07-AA0000?style=for-the-badge&logo=codeforces&logoColor=white)](https://oj.vnoi.info/user/thanhnguyen07)
 
 ### 🎓 Education
 
