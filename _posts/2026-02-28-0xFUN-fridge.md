@@ -1,7 +1,7 @@
 ---
 title: "Fridge - 0xFUN CTF Write Up"
 date: 2026-02-28
-tags: [PascalCTF, pwn]
+tags: [0xFUN, pwn]
 description: "My team's write up for 0xFUN contest"
 ---
 

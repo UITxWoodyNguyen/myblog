@@ -1,7 +1,7 @@
 ---
 title: "Startfield Relay - UniVsThreats26 Quals Writeup"
 date: 2026-03-02
-tags: [PascalCTF, reverse]
+tags: [UVT, reverse]
 description: "My team's write up for UVT contest"
 ---
 
