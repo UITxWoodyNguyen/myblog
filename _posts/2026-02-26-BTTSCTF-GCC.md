@@ -355,6 +355,7 @@ Looking in IDA, at address `0x4020` - file offset = `0x3020`, we can find 64 enc
     FC A7 16 EE E8 99 04 8B  BF DE 05 8B 2E 53 17 8B
     45 A2 51 28 14 8A 45 A2  51 28 14 0A 85 C2 61 B0
     ```
+    
 Base on the flow of `main`, we can have the exploit script:
 
 ```python
