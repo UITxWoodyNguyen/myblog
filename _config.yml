@@ -2,7 +2,7 @@
 # Site Settings
 # ============================================================
 title: Wood13nqxy3n's Blog
-description: "This is Wood13nqxy3n's personal blog."
+description: "This is Wood13nqxy3n's personal blog. You can find the solution/writeups of some Capture The Flag (CTF) and some researchs about security challenge on this site"
 author: Woodie
 url: "https://uitxwoodynguyen.github.io"
 baseurl: "/myblog"
