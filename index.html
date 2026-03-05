@@ -61,9 +61,9 @@ title: Home
 </div>
 {% endif %}
 
-<!-- Posts List -->
+<!-- Posts List (all posts rendered, JS handles pagination + filtering) -->
 <div class="posts-grid" id="posts-grid">
-  {% for post in paginator.posts %}
+  {% for post in site.posts %}
     <a href="{{ post.url | relative_url }}" 
        class="post-card"
        data-title="{{ post.title }}"
@@ -96,41 +96,19 @@ title: Home
   <p>No posts found matching your search.</p>
 </div>
 
-<!-- Pagination -->
-{% if paginator.total_pages > 1 %}
-<nav class="pagination" aria-label="Pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link pagination-prev">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-      Prev
-    </a>
-  {% else %}
-    <span class="pagination-link pagination-prev disabled">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-      Prev
-    </span>
-  {% endif %}
-
-  <span class="pagination-info">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link pagination-next">
-      Next
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </a>
-  {% else %}
-    <span class="pagination-link pagination-next disabled">
-      Next
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </span>
-  {% endif %}
+<!-- Pagination (JS-driven) -->
+<nav class="pagination" id="pagination" aria-label="Pagination">
+  <button class="pagination-link pagination-prev" id="page-prev" disabled>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    Prev
+  </button>
+  <span class="pagination-info" id="page-info"></span>
+  <button class="pagination-link pagination-next" id="page-next" disabled>
+    Next
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
 </nav>
-{% endif %}

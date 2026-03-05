@@ -71,14 +71,21 @@
   const noResults = document.getElementById('no-results');
   var activeCategory = 'all';
   var activeTag = '';
+  var currentPage = 1;
+  var postsPerPage = 10;
 
-  function applyFilters() {
-    if (!postsGrid) return;
+  // Get all post cards once
+  var allCards = postsGrid ? Array.from(postsGrid.querySelectorAll('.post-card')) : [];
+
+  // Pagination elements
+  var paginationNav = document.getElementById('pagination');
+  var pagePrev = document.getElementById('page-prev');
+  var pageNext = document.getElementById('page-next');
+  var pageInfo = document.getElementById('page-info');
+
+  function getFilteredCards() {
     var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    var cards = postsGrid.querySelectorAll('.post-card');
-    var visibleCount = 0;
-
-    cards.forEach(function (card) {
+    return allCards.filter(function (card) {
       var title = (card.getAttribute('data-title') || '').toLowerCase();
       var tags = (card.getAttribute('data-tags') || '').toLowerCase();
       var excerpt = (card.getAttribute('data-excerpt') || '').toLowerCase();
@@ -88,14 +95,67 @@
       var matchCategory = activeCategory === 'all' || category.includes(activeCategory.toLowerCase());
       var matchTag = !activeTag || tags.includes(activeTag.toLowerCase());
 
-      var visible = matchSearch && matchCategory && matchTag;
-      card.style.display = visible ? '' : 'none';
-      if (visible) visibleCount++;
+      return matchSearch && matchCategory && matchTag;
+    });
+  }
+
+  function renderPage() {
+    if (!postsGrid) return;
+    var filtered = getFilteredCards();
+    var totalPages = Math.max(1, Math.ceil(filtered.length / postsPerPage));
+
+    // Clamp current page
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    var start = (currentPage - 1) * postsPerPage;
+    var end = start + postsPerPage;
+    var pageCards = filtered.slice(start, end);
+
+    // Hide all, show only current page's filtered cards
+    allCards.forEach(function (card) { card.style.display = 'none'; });
+    pageCards.forEach(function (card, i) {
+      card.style.display = '';
+      card.style.animationDelay = (i * 0.05) + 's';
     });
 
+    // No results message
     if (noResults) {
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      noResults.style.display = filtered.length === 0 ? 'block' : 'none';
     }
+
+    // Update pagination UI
+    if (paginationNav) {
+      paginationNav.style.display = totalPages > 1 ? '' : 'none';
+    }
+    if (pageInfo) {
+      pageInfo.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+    }
+    if (pagePrev) {
+      pagePrev.disabled = currentPage <= 1;
+      pagePrev.classList.toggle('disabled', currentPage <= 1);
+    }
+    if (pageNext) {
+      pageNext.disabled = currentPage >= totalPages;
+      pageNext.classList.toggle('disabled', currentPage >= totalPages);
+    }
+  }
+
+  // Pagination button events
+  if (pagePrev) {
+    pagePrev.addEventListener('click', function () {
+      if (currentPage > 1) { currentPage--; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    });
+  }
+  if (pageNext) {
+    pageNext.addEventListener('click', function () {
+      currentPage++; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  function applyFilters() {
+    currentPage = 1;
+    renderPage();
   }
 
   if (searchInput) {
@@ -341,6 +401,7 @@
   // Initialize
   // ============================================================
   document.addEventListener('DOMContentLoaded', function () {
+    renderPage();
     lazyLoadImages();
     animatePostContent();
     setupExternalLinks();

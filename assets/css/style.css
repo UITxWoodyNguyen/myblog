@@ -727,20 +727,24 @@ img {
   color: var(--text);
   font-size: 0.9rem;
   font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
   transition: border-color var(--transition), background var(--transition), color var(--transition);
 }
 
-.pagination-link:hover {
+.pagination-link:hover:not(.disabled):not(:disabled) {
   border-color: var(--primary);
   color: var(--primary);
   background: var(--hover);
   opacity: 1;
 }
 
-.pagination-link.disabled {
+.pagination-link.disabled,
+.pagination-link:disabled {
   color: var(--text-secondary);
   opacity: 0.4;
   pointer-events: none;
+  cursor: default;
 }
 
 .pagination-info {
