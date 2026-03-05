@@ -118,6 +118,86 @@ permalink: /categories/
           </svg>
         </a>
         {% endif %}
+
+        {% comment %} ===== IT002 ===== {% endcomment %}
+        {% assign it002_posts = site.posts | where_exp: "post", "post.categories contains 'it002'" %}
+        {% if it002_posts.size > 0 %}
+        <a href="{{ '/categories/it002/' | relative_url }}" class="category-card">
+          <div class="category-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div class="category-card-info">
+            <h3 class="category-card-title">IT002</h3>
+            <p class="category-card-count">{{ it002_posts.size }} post{% if it002_posts.size != 1 %}s{% endif %}</p>
+          </div>
+          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+        {% endif %}
+
+        {% comment %} ===== IT003 ===== {% endcomment %}
+        {% assign it003_posts = site.posts | where_exp: "post", "post.categories contains 'it003'" %}
+        {% if it003_posts.size > 0 %}
+        <a href="{{ '/categories/it003/' | relative_url }}" class="category-card">
+          <div class="category-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div class="category-card-info">
+            <h3 class="category-card-title">IT003</h3>
+            <p class="category-card-count">{{ it003_posts.size }} post{% if it003_posts.size != 1 %}s{% endif %}</p>
+          </div>
+          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+        {% endif %}
+
+        {% comment %} ===== IT005 ===== {% endcomment %}
+        {% assign it005_posts = site.posts | where_exp: "post", "post.categories contains 'it005'" %}
+        {% if it005_posts.size > 0 %}
+        <a href="{{ '/categories/it005/' | relative_url }}" class="category-card">
+          <div class="category-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div class="category-card-info">
+            <h3 class="category-card-title">IT005</h3>
+            <p class="category-card-count">{{ it005_posts.size }} post{% if it005_posts.size != 1 %}s{% endif %}</p>
+          </div>
+          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+        {% endif %}
+
+        {% comment %} ===== IT006 ===== {% endcomment %}
+        {% assign it006_posts = site.posts | where_exp: "post", "post.categories contains 'it006'" %}
+        {% if it006_posts.size > 0 %}
+        <a href="{{ '/categories/it006/' | relative_url }}" class="category-card">
+          <div class="category-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div class="category-card-info">
+            <h3 class="category-card-title">IT006</h3>
+            <p class="category-card-count">{{ it006_posts.size }} post{% if it006_posts.size != 1 %}s{% endif %}</p>
+          </div>
+          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+        {% endif %}
       </div>
     </div>
     {% endif %}
