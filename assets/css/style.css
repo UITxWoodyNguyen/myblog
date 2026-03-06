@@ -340,7 +340,7 @@ img {
    ============================================================ */
 .filter-bar {
   display: flex;
-  align-items: stretch;
+  align-items: flex-end;
   gap: 12px;
   margin-bottom: 28px;
   flex-wrap: wrap;
