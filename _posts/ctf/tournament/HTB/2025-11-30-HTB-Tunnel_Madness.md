@@ -1,6 +1,6 @@
 ---
 title: "Tunnel Madness - Hack The Box CTF Try Out Writeup"
-date: 2026-11-30
+date: 2025-11-30
 categories: [CTF, Tournament]
 tags: [HTB, reverse]
 description: "No Description."
