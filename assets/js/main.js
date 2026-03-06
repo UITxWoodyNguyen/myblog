@@ -402,6 +402,44 @@
   }
 
   // ============================================================
+  // ============================================================
+  // Folder Tree Toggle (Categories page)
+  // ============================================================
+  function initFolderTree() {
+    var groups = document.querySelectorAll('.folder-group');
+    groups.forEach(function (group) {
+      var btn = group.querySelector('.folder-parent');
+      var children = group.querySelector('.folder-children');
+      if (!btn || !children) return;
+
+      // Set initial max-height for open groups
+      if (group.getAttribute('data-open') === 'true') {
+        children.style.maxHeight = children.scrollHeight + 'px';
+      }
+
+      btn.addEventListener('click', function () {
+        var isOpen = group.getAttribute('data-open') === 'true';
+        if (isOpen) {
+          children.style.maxHeight = children.scrollHeight + 'px';
+          // Force reflow then collapse
+          children.offsetHeight;
+          children.style.maxHeight = '0';
+          group.setAttribute('data-open', 'false');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          group.setAttribute('data-open', 'true');
+          btn.setAttribute('aria-expanded', 'true');
+          children.style.maxHeight = children.scrollHeight + 'px';
+          children.addEventListener('transitionend', function handler() {
+            children.style.maxHeight = 'none';
+            children.removeEventListener('transitionend', handler);
+          });
+        }
+      });
+    });
+  }
+
+  // ============================================================
   // Initialize
   // ============================================================
   document.addEventListener('DOMContentLoaded', function () {
@@ -411,6 +449,7 @@
     setupExternalLinks();
     buildTOC();
     addCopyButtons();
+    initFolderTree();
   });
 
 })();

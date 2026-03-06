@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign cat_posts = site.posts | where_exp: "post", "post.categories contains page.category" %}
 <section class="category-page">
   <header class="category-header">
     <a href="{{ '/categories/' | relative_url }}" class="category-back-link">
@@ -8,41 +9,25 @@ layout: default
         <line x1="19" y1="12" x2="5" y2="12"></line>
         <polyline points="12 19 5 12 12 5"></polyline>
       </svg>
-      All Categories
+      Categories
     </a>
-    <h1 class="category-page-title">{{ page.title }}</h1>
-    <p class="category-page-desc">
-      {% assign cat_posts = site.posts | where_exp: "post", "post.categories contains page.category" %}
-      {{ cat_posts.size }} post{% if cat_posts.size != 1 %}s{% endif %}
-    </p>
+    <div class="category-title-row">
+      <svg class="folder-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <h1 class="category-page-title">{{ page.title }}</h1>
+      <span class="category-page-count">{{ cat_posts.size }}</span>
+    </div>
   </header>
 
-  <div class="posts-grid" id="posts-grid">
+  <ul class="folder-post-list">
     {% for post in cat_posts %}
-      <a href="{{ post.url | relative_url }}" class="post-card"
-         data-title="{{ post.title }}"
-         data-tags="{{ post.tags | join: ' ' }}"
-         data-category="{{ post.categories | join: ' ' }}"
-         data-excerpt="{{ post.excerpt | strip_html | truncatewords: 30 }}">
-        <div class="post-card-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">
-            {{ post.date | date: "%B %d, %Y" }}
-          </time>
-          {% if post.categories.size > 0 %}
-            <span class="meta-separator">&middot;</span>
-            <span class="post-card-category">{{ post.categories | last }}</span>
-          {% endif %}
-        </div>
-        <h2 class="post-card-title">{{ post.title }}</h2>
-        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-        {% if post.tags.size > 0 %}
-          <div class="post-card-tags">
-            {% for tag in post.tags %}
-              <span class="tag-link">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </a>
+    <li class="folder-post-item">
+      <span class="folder-post-bullet">&bull;</span>
+      <a href="{{ post.url | relative_url }}" class="folder-post-link">{{ post.title }}</a>
+      <span class="folder-post-dots"></span>
+      <time class="folder-post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>

@@ -6,75 +6,48 @@ permalink: /categories/
 <section class="categories-index">
   <header class="hero">
     <h1 class="hero-title">Categories</h1>
-    <p class="hero-subtitle">Browse writeups by category</p>
   </header>
 
-  {% comment %} Build category tree: CTF > Tournament / Training {% endcomment %}
-  {% assign all_categories = "" | split: "" %}
-  {% for post in site.posts %}
-    {% for cat in post.categories %}
-      {% unless all_categories contains cat %}
-        {% assign all_categories = all_categories | push: cat %}
-      {% endunless %}
-    {% endfor %}
-  {% endfor %}
+  <div class="folder-tree">
 
-  <div class="category-tree">
-    {% comment %} ===== CTF (parent) ===== {% endcomment %}
+    {% comment %} ===== CTF ===== {% endcomment %}
     {% assign ctf_posts = site.posts | where_exp: "post", "post.categories contains 'CTF'" %}
-    {% if ctf_posts.size > 0 %}
-    <div class="category-group">
-      <div class="category-group-header">
-        <div class="category-group-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-            <line x1="4" y1="22" x2="4" y2="15"></line>
-          </svg>
-        </div>
-        <div>
-          <h2 class="category-group-title">CTF</h2>
-          <p class="category-group-count">{{ ctf_posts.size }} post{% if ctf_posts.size != 1 %}s{% endif %} total</p>
-        </div>
-      </div>
+    {% assign tournament_posts = site.posts | where_exp: "post", "post.categories contains 'Tournament'" %}
+    {% assign training_posts = site.posts | where_exp: "post", "post.categories contains 'Training'" %}
+    {% assign ctf_children = 0 %}
+    {% if tournament_posts.size > 0 %}{% assign ctf_children = ctf_children | plus: 1 %}{% endif %}
+    {% if training_posts.size > 0 %}{% assign ctf_children = ctf_children | plus: 1 %}{% endif %}
 
-      <div class="category-children">
-        {% comment %} ===== Tournament ===== {% endcomment %}
-        {% assign tournament_posts = site.posts | where_exp: "post", "post.categories contains 'Tournament'" %}
+    {% if ctf_posts.size > 0 %}
+    <div class="folder-group" data-open="true">
+      <button class="folder-parent" aria-expanded="true">
+        <svg class="folder-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <svg class="folder-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="folder-name">CTF</span>
+        <span class="folder-meta">{{ ctf_children }} categor{% if ctf_children == 1 %}y{% else %}ies{% endif %} , {{ ctf_posts.size }} post{% if ctf_posts.size != 1 %}s{% endif %}</span>
+      </button>
+
+      <div class="folder-children">
         {% if tournament_posts.size > 0 %}
-        <a href="{{ '/categories/tournament/' | relative_url }}" class="category-card">
-          <div class="category-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="7"></circle>
-              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-            </svg>
-          </div>
-          <div class="category-card-info">
-            <h3 class="category-card-title">Tournament</h3>
-            <p class="category-card-count">{{ tournament_posts.size }} post{% if tournament_posts.size != 1 %}s{% endif %}</p>
-          </div>
-          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
+        <a href="{{ '/categories/tournament/' | relative_url }}" class="folder-child">
+          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
           </svg>
+          <span class="folder-child-name">Tournament</span>
+          <span class="folder-child-count">{{ tournament_posts.size }} post{% if tournament_posts.size != 1 %}s{% endif %}</span>
         </a>
         {% endif %}
-
-        {% comment %} ===== Training ===== {% endcomment %}
-        {% assign training_posts = site.posts | where_exp: "post", "post.categories contains 'Training'" %}
         {% if training_posts.size > 0 %}
-        <a href="{{ '/categories/training/' | relative_url }}" class="category-card">
-          <div class="category-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-          </div>
-          <div class="category-card-info">
-            <h3 class="category-card-title">Training</h3>
-            <p class="category-card-count">{{ training_posts.size }} post{% if training_posts.size != 1 %}s{% endif %}</p>
-          </div>
-          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
+        <a href="{{ '/categories/training/' | relative_url }}" class="folder-child">
+          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
           </svg>
+          <span class="folder-child-name">Training</span>
+          <span class="folder-child-count">{{ training_posts.size }} post{% if training_posts.size != 1 %}s{% endif %}</span>
         </a>
         {% endif %}
       </div>
@@ -84,77 +57,29 @@ permalink: /categories/
     {% comment %} ===== Report ===== {% endcomment %}
     {% assign report_posts = site.posts | where_exp: "post", "post.categories contains 'Report'" %}
     {% if report_posts.size > 0 %}
-    <div class="category-group">
-      <div class="category-group-header">
-        <div class="category-group-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-        </div>
-        <div>
-          <h2 class="category-group-title">Report</h2>
-          <p class="category-group-count">{{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %} total</p>
-        </div>
-      </div>
+    <div class="folder-group" data-open="true">
+      <button class="folder-parent" aria-expanded="true">
+        <svg class="folder-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <svg class="folder-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="folder-name">Report</span>
+        <span class="folder-meta">1 category , {{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</span>
+      </button>
 
-      <div class="category-children">
-        <a href="{{ '/categories/report/' | relative_url }}" class="category-card">
-          <div class="category-card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-              <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-          </div>
-          <div class="category-card-info">
-            <h3 class="category-card-title">Report</h3>
-            <p class="category-card-count">{{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</p>
-          </div>
-          <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
+      <div class="folder-children">
+        <a href="{{ '/categories/report/' | relative_url }}" class="folder-child">
+          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
           </svg>
+          <span class="folder-child-name">Report</span>
+          <span class="folder-child-count">{{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</span>
         </a>
       </div>
     </div>
     {% endif %}
-  </div>
 
-  {% comment %} ===== Recent Posts ===== {% endcomment %}
-  <div class="categories-recent">
-    <h2 class="section-title">Recent Posts</h2>
-    <div class="posts-grid" id="posts-grid">
-      {% for post in site.posts limit:5 %}
-        <a href="{{ post.url | relative_url }}" class="post-card"
-           data-title="{{ post.title }}"
-           data-tags="{{ post.tags | join: ' ' }}"
-           data-category="{{ post.categories | join: ' ' }}"
-           data-excerpt="{{ post.excerpt | strip_html | truncatewords: 30 }}">
-          <div class="post-card-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | date: "%B %d, %Y" }}
-            </time>
-            {% if post.categories.size > 0 %}
-              <span class="meta-separator">&middot;</span>
-              <span class="post-card-category">{{ post.categories | join: " / " }}</span>
-            {% endif %}
-          </div>
-          <h2 class="post-card-title">{{ post.title }}</h2>
-          <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-          {% if post.tags.size > 0 %}
-            <div class="post-card-tags">
-              {% for tag in post.tags %}
-                <span class="tag-link">{{ tag }}</span>
-              {% endfor %}
-            </div>
-          {% endif %}
-        </a>
-      {% endfor %}
-    </div>
   </div>
 </section>
