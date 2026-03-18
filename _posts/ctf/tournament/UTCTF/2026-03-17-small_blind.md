@@ -830,3 +830,7 @@ $ python3 exploit.py
 - In interactive game services, always test pre-game user fields first.
 - If a challenge hints "more than one way to win", exploit path likely bypasses intended game logic.
 - `%n` often turns a simple leak into complete game-state control.
+
+## Challenge Source Code
+
+Challenge's Github Repository: [small_blind](https://github.com/UITxWoodyNguyen/CTF/tree/main/UTCTF-2026/pwn/small-blind)

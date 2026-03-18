@@ -422,3 +422,7 @@ utflag{gu4rd_w4s_w34ker_th4n_i_th0ught}
 - Stack frame/offset reasoning from assembly.
 - Runtime debugger validation of overwritten control flow.
 - Payload engineering with exact RIP offset and static function address.
+
+## Challenge Source Code
+
+Challenge's Github Repository: [rude_guard](https://github.com/UITxWoodyNguyen/CTF/tree/main/UTCTF-2026/pwn/rude-guard)

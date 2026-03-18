@@ -415,3 +415,7 @@ utflag{f0rm4t_str1ng_l34k3d}
 - Dynamic validation in runtime/GDB.
 - Format-string probing and positional offset brute-force.
 - Exploit automation concept with pwntools.
+
+## Challenge Source Code
+
+Challenge's Github Repository: [hour_of_joy](https://github.com/UITxWoodyNguyen/CTF/tree/main/UTCTF-2026/pwn/hour-of-joy)
