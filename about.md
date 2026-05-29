@@ -8,10 +8,8 @@ permalink: /about/
 
 # `wood13nqxy3n`
 
+
 **Student · Developer · CTF Player · Security Researcher**
-
-*Breaking things to understand them. Building things to prove it.*
-
 </div>
 
 ---
