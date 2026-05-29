@@ -4,16 +4,6 @@ title: About
 permalink: /about/
 ---
 
-<div align="center">
-
-# `wood13nqxy3n`
-
-
-**Student · Developer · CTF Player · Security Researcher**
-</div>
-
----
-
 ## 👋 Who Am I?
 
 I'm **Wood13nqxy3n** — a cybersecurity & information security student at the **University of Information Technology (VNU-HCM)**, with a passion for **CTF competitions**, **reverse engineering**, **competitive programming**, and **low-level systems**.
