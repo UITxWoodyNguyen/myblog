@@ -1,0 +1,6 @@
+---
+layout: category
+title: Research
+category: Research
+permalink: /categories/research/
+---

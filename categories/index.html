@@ -54,6 +54,36 @@ permalink: /categories/
     </div>
     {% endif %}
 
+    {% comment %} ===== Research ===== {% endcomment %}
+    {% assign research_posts = site.posts | where_exp: "post", "post.categories contains 'Research'" %}
+
+    {% if research_posts.size > 0 %}
+    <div class="folder-group" data-open="true">
+      <button class="folder-parent" aria-expanded="true">
+        <svg class="folder-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <svg class="folder-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="folder-name">Research</span>
+        <span class="folder-meta">1 category , {{ research_posts.size }} post{% if research_posts.size != 1 %}s{% endif %}</span>
+      </button>
+
+      <div class="folder-children">
+        <a href="{{ '/categories/research/' | relative_url }}" class="folder-child">
+          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="folder-child-name">Research</span>
+          <span class="folder-child-count">{{ research_posts.size }} post{% if research_posts.size != 1 %}s{% endif %}</span>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
     {% comment %} ===== Report ===== {% endcomment %}
     {% assign report_posts = site.posts | where_exp: "post", "post.categories contains 'Report'" %}
     {% if report_posts.size > 0 %}

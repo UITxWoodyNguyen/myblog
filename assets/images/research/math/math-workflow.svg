@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Math research workflow</title>
+  <desc id="desc">A simple illustration for a math research write-up.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="32" fill="url(#bg)"/>
+  <circle cx="180" cy="130" r="90" fill="#f59e0b22"/>
+  <circle cx="790" cy="410" r="120" fill="#38bdf822"/>
+  <path d="M140 370C250 250 350 250 460 370S670 490 820 350" fill="none" stroke="url(#line)" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#0b1220" stroke="#f59e0b" stroke-width="4">
+    <rect x="110" y="180" width="220" height="140" rx="24"/>
+    <rect x="370" y="180" width="220" height="140" rx="24"/>
+    <rect x="630" y="180" width="220" height="140" rx="24"/>
+  </g>
+  <g fill="#e5e7eb" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="220" y="235" font-size="26" font-weight="700">Define</text>
+    <text x="220" y="270" font-size="18" fill="#9ca3af">state the problem</text>
+    <text x="480" y="235" font-size="26" font-weight="700">Derive</text>
+    <text x="480" y="270" font-size="18" fill="#9ca3af">work the proof</text>
+    <text x="740" y="235" font-size="26" font-weight="700">Record</text>
+    <text x="740" y="270" font-size="18" fill="#9ca3af">publish the notes</text>
+  </g>
+  <text x="480" y="465" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle">Math Research</text>
+</svg>

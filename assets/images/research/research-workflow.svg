@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Research workflow diagram</title>
+  <desc id="desc">A simple flow from collect to map to report with connected nodes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="32" fill="url(#bg)"/>
+  <circle cx="145" cy="120" r="72" fill="#38bdf822"/>
+  <circle cx="820" cy="120" r="96" fill="#22c55e22"/>
+  <circle cx="760" cy="430" r="110" fill="#38bdf811"/>
+  <g fill="none" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M260 270H390"/>
+    <path d="M570 270H700"/>
+  </g>
+  <g fill="#0b1220" stroke="#38bdf8" stroke-width="4">
+    <rect x="120" y="190" width="200" height="160" rx="28"/>
+    <rect x="380" y="190" width="200" height="160" rx="28"/>
+    <rect x="640" y="190" width="200" height="160" rx="28"/>
+  </g>
+  <g fill="#e2e8f0" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="220" y="245" font-size="28" font-weight="700">Collect</text>
+    <text x="220" y="282" font-size="18" fill="#94a3b8">Scope the target</text>
+    <text x="480" y="245" font-size="28" font-weight="700">Map</text>
+    <text x="480" y="282" font-size="18" fill="#94a3b8">Trace the surface</text>
+    <text x="740" y="245" font-size="28" font-weight="700">Report</text>
+    <text x="740" y="282" font-size="18" fill="#94a3b8">Write the findings</text>
+  </g>
+  <text x="480" y="470" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="22" text-anchor="middle">Research Workflow</text>
+</svg>

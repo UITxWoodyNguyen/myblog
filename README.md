@@ -42,18 +42,21 @@ myblog/
 │   ├── navbar.html          # Navigation bar
 │   └── footer.html          # Footer
 ├── _posts/
-│   └── ctf/
-│       ├── tournament/
-│       │   ├── PascalCTF/   # Posts for PascalCTF contest
-│       │   ├── BITSCTF/     # Posts for BITSCTF contest
-│       │   ├── 0xFUN/       # Posts for 0xFUN contest
-│       │   └── UVT/         # Posts for UVT contest
-│       └── training/
-│           ├── picoCTF/     # picoCTF practice writeups
-│           └── Dreamhack/   # Dreamhack practice writeups
+│   ├── ctf/
+│   │   ├── tournament/
+│   │   │   ├── PascalCTF/   # Posts for PascalCTF contest
+│   │   │   ├── BITSCTF/     # Posts for BITSCTF contest
+│   │   │   ├── 0xFUN/       # Posts for 0xFUN contest
+│   │   │   └── UVT/         # Posts for UVT contest
+│   │   └── training/
+│   │       ├── picoCTF/     # picoCTF practice writeups
+│   │       └── Dreamhack/   # Dreamhack practice writeups
+│   └── research/
+│       └── math/            # Research write-ups and notes
 ├── categories/
 │   ├── index.html           # /categories/ overview page
 │   ├── tournament.html      # /categories/tournament/ listing
+│   ├── research.html        # /categories/research/ listing
 │   └── training.html        # /categories/training/ listing
 ├── assets/
 │   ├── css/
@@ -221,30 +224,30 @@ No other config changes needed. Jekyll auto-discovers posts in subfolders.
 
 ---
 
-### Adding a New Sub-category
+### Adding a New Research Topic
 
-Example: add a **Research** sub-category under CTF.
+Example: add a **Math** research topic.
 
 **Step 1** — Create the folder:
 
 ```bash
-mkdir -p _posts/ctf/research/TopicName
+mkdir -p _posts/research/math
 ```
 
-**Step 2** — Add posts with the new sub-category in frontmatter:
+**Step 2** — Add posts with the new topic in frontmatter:
 
 ```yaml
-# _posts/ctf/research/TopicName/2026-03-04-article.md
+# _posts/research/math/2026-03-04-article.md
 ---
-title: "Research Article"
+title: "Math Research Article"
 date: 2026-03-04
-categories: [CTF, Research]
-tags: [malware, analysis]
+categories: [Research, Math]
+tags: [math, analysis]
 description: "Description"
 ---
 ```
 
-**Step 3** — Create a sub-category page at `categories/research.html`:
+**Step 3** — Create the category page at `categories/research.html`:
 
 ```yaml
 ---
@@ -255,25 +258,12 @@ permalink: /categories/research/
 ---
 ```
 
-**Step 4** — Add the card to `categories/index.html` inside the `.category-children` div:
+**Step 4** — Add the Research card to `categories/index.html` as a top-level folder, not under CTF.
+
+**Step 5** — (Optional) Add the Research option to `index.html`:
 
 ```html
-<a href="{{ '/categories/research/' | relative_url }}" class="category-card">
-  <div class="category-card-icon">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  </div>
-  <div class="category-card-info">
-    <h3 class="category-card-title">Research</h3>
-    <p class="category-card-count">{{ research_posts.size }} posts</p>
-  </div>
-  <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-</a>
-```
-
-**Step 5** — (Optional) Add a filter button to `index.html`:
-
-```html
-<button class="cat-btn" data-category="Research">Research</button>
+<option value="Research">Research</option>
 ```
 
 ---
