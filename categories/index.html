@@ -3,6 +3,7 @@ layout: default
 title: Categories
 permalink: /categories/
 ---
+
 <section class="categories-index">
   <header class="hero">
     <h1 class="hero-title">Categories</h1>
@@ -10,10 +11,28 @@ permalink: /categories/
 
   <div class="folder-tree">
 
+    {% comment %}
+      Build post lists case-insensitively.
+      (where_exp + contains is case-sensitive, which is what hid the Research folder)
+    {% endcomment %}
+    {% assign ctf_posts = "" | split: "" %}
+    {% assign tournament_posts = "" | split: "" %}
+    {% assign training_posts = "" | split: "" %}
+    {% assign research_posts = "" | split: "" %}
+    {% assign report_posts = "" | split: "" %}
+
+    {% for post in site.posts %}
+      {% for category in post.categories %}
+        {% assign c = category | downcase %}
+        {% if c == "ctf" %}{% assign ctf_posts = ctf_posts | push: post %}{% endif %}
+        {% if c == "tournament" %}{% assign tournament_posts = tournament_posts | push: post %}{% endif %}
+        {% if c == "training" %}{% assign training_posts = training_posts | push: post %}{% endif %}
+        {% if c == "research" %}{% assign research_posts = research_posts | push: post %}{% endif %}
+        {% if c == "report" %}{% assign report_posts = report_posts | push: post %}{% endif %}
+      {% endfor %}
+    {% endfor %}
+
     {% comment %} ===== CTF ===== {% endcomment %}
-    {% assign ctf_posts = site.posts | where_exp: "post", "post.categories contains 'CTF'" %}
-    {% assign tournament_posts = site.posts | where_exp: "post", "post.categories contains 'Tournament'" %}
-    {% assign training_posts = site.posts | where_exp: "post", "post.categories contains 'Training'" %}
     {% assign ctf_children = 0 %}
     {% if tournament_posts.size > 0 %}{% assign ctf_children = ctf_children | plus: 1 %}{% endif %}
     {% if training_posts.size > 0 %}{% assign ctf_children = ctf_children | plus: 1 %}{% endif %}
@@ -55,8 +74,6 @@ permalink: /categories/
     {% endif %}
 
     {% comment %} ===== Research ===== {% endcomment %}
-    {% assign research_posts = site.posts | where_exp: "post", "post.categories contains 'Research'" %}
-
     {% if research_posts.size > 0 %}
     <div class="folder-group" data-open="true">
       <button class="folder-parent" aria-expanded="true">
@@ -85,7 +102,6 @@ permalink: /categories/
     {% endif %}
 
     {% comment %} ===== Report ===== {% endcomment %}
-    {% assign report_posts = site.posts | where_exp: "post", "post.categories contains 'Report'" %}
     {% if report_posts.size > 0 %}
     <div class="folder-group" data-open="true">
       <button class="folder-parent" aria-expanded="true">
