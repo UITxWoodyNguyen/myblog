@@ -9,28 +9,25 @@ permalink: /categories/
     <h1 class="hero-title">Categories</h1>
   </header>
 
-  <div class="folder-tree">
+  {% comment %} ===== Build post lists (case-insensitive) ===== {% endcomment %}
+  {% assign ctf_posts = "" | split: "" %}
+  {% assign tournament_posts = "" | split: "" %}
+  {% assign training_posts = "" | split: "" %}
+  {% assign research_posts = "" | split: "" %}
+  {% assign report_posts = "" | split: "" %}
 
-    {% comment %}
-      Build post lists case-insensitively.
-      (where_exp + contains is case-sensitive, which is what hid the Research folder)
-    {% endcomment %}
-    {% assign ctf_posts = "" | split: "" %}
-    {% assign tournament_posts = "" | split: "" %}
-    {% assign training_posts = "" | split: "" %}
-    {% assign research_posts = "" | split: "" %}
-    {% assign report_posts = "" | split: "" %}
-
-    {% for post in site.posts %}
-      {% for category in post.categories %}
-        {% assign c = category | downcase %}
-        {% if c == "ctf" %}{% assign ctf_posts = ctf_posts | push: post %}{% endif %}
-        {% if c == "tournament" %}{% assign tournament_posts = tournament_posts | push: post %}{% endif %}
-        {% if c == "training" %}{% assign training_posts = training_posts | push: post %}{% endif %}
-        {% if c == "research" %}{% assign research_posts = research_posts | push: post %}{% endif %}
-        {% if c == "report" %}{% assign report_posts = report_posts | push: post %}{% endif %}
-      {% endfor %}
+  {% for post in site.posts %}
+    {% for category in post.categories %}
+      {% assign c = category | downcase %}
+      {% if c == "ctf" %}{% assign ctf_posts = ctf_posts | push: post %}{% endif %}
+      {% if c == "tournament" %}{% assign tournament_posts = tournament_posts | push: post %}{% endif %}
+      {% if c == "training" %}{% assign training_posts = training_posts | push: post %}{% endif %}
+      {% if c == "research" %}{% assign research_posts = research_posts | push: post %}{% endif %}
+      {% if c == "report" %}{% assign report_posts = report_posts | push: post %}{% endif %}
     {% endfor %}
+  {% endfor %}
+
+  <div class="folder-tree">
 
     {% comment %} ===== CTF ===== {% endcomment %}
     {% assign ctf_children = 0 %}
@@ -52,28 +49,63 @@ permalink: /categories/
 
       <div class="folder-children">
         {% if tournament_posts.size > 0 %}
-        <a href="{{ '/categories/tournament/' | relative_url }}" class="folder-child">
-          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span class="folder-child-name">Tournament</span>
-          <span class="folder-child-count">{{ tournament_posts.size }} post{% if tournament_posts.size != 1 %}s{% endif %}</span>
-        </a>
+        <div class="folder-group" data-open="false">
+          <button class="folder-parent" aria-expanded="false">
+            <svg class="folder-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="folder-name">Tournament</span>
+            <span class="folder-meta">{{ tournament_posts.size }} post{% if tournament_posts.size != 1 %}s{% endif %}</span>
+          </button>
+          <div class="folder-children" hidden>
+            {% for post in tournament_posts %}
+            <a href="{{ post.url | relative_url }}" class="folder-child post-item">
+              <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <span class="folder-child-name">{{ post.title }}</span>
+              <span class="folder-child-count">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
         {% endif %}
+
         {% if training_posts.size > 0 %}
-        <a href="{{ '/categories/training/' | relative_url }}" class="folder-child">
-          <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span class="folder-child-name">Training</span>
-          <span class="folder-child-count">{{ training_posts.size }} post{% if training_posts.size != 1 %}s{% endif %}</span>
-        </a>
+        <div class="folder-group" data-open="false">
+          <button class="folder-parent" aria-expanded="false">
+            <svg class="folder-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+            <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="folder-name">Training</span>
+            <span class="folder-meta">{{ training_posts.size }} post{% if training_posts.size != 1 %}s{% endif %}</span>
+          </button>
+          <div class="folder-children" hidden>
+            {% for post in training_posts %}
+            <a href="{{ post.url | relative_url }}" class="folder-child post-item">
+              <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <span class="folder-child-name">{{ post.title }}</span>
+              <span class="folder-child-count">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
         {% endif %}
       </div>
     </div>
     {% endif %}
 
-    {% comment %} ===== Research ===== {% endcomment %}
+    {% comment %} ===== Research — posts listed directly in the folder ===== {% endcomment %}
     {% if research_posts.size > 0 %}
     <div class="folder-group" data-open="true">
       <button class="folder-parent" aria-expanded="true">
@@ -85,18 +117,20 @@ permalink: /categories/
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
         <span class="folder-name">Research</span>
-        <span class="folder-meta">1 category , {{ research_posts.size }} post{% if research_posts.size != 1 %}s{% endif %}</span>
+        <span class="folder-meta">{{ research_posts.size }} post{% if research_posts.size != 1 %}s{% endif %}</span>
       </button>
 
       <div class="folder-children">
-        <a href="{{ '/categories/research/' | relative_url }}" class="folder-child">
+        {% for post in research_posts %}
+        <a href="{{ post.url | relative_url }}" class="folder-child post-item">
           <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
-          <span class="folder-child-name">Research</span>
-          <span class="folder-child-count">{{ research_posts.size }} post{% if research_posts.size != 1 %}s{% endif %}</span>
+          <span class="folder-child-name">{{ post.title }}</span>
+          <span class="folder-child-count">{{ post.date | date: "%Y-%m-%d" }}</span>
         </a>
+        {% endfor %}
       </div>
     </div>
     {% endif %}
@@ -112,20 +146,47 @@ permalink: /categories/
           <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
         </svg>
         <span class="folder-name">Report</span>
-        <span class="folder-meta">1 category , {{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</span>
+        <span class="folder-meta">{{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</span>
       </button>
 
       <div class="folder-children">
-        <a href="{{ '/categories/report/' | relative_url }}" class="folder-child">
+        {% for post in report_posts %}
+        <a href="{{ post.url | relative_url }}" class="folder-child post-item">
           <svg class="folder-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
-          <span class="folder-child-name">Report</span>
-          <span class="folder-child-count">{{ report_posts.size }} post{% if report_posts.size != 1 %}s{% endif %}</span>
+          <span class="folder-child-name">{{ post.title }}</span>
+          <span class="folder-child-count">{{ post.date | date: "%Y-%m-%d" }}</span>
         </a>
+        {% endfor %}
       </div>
     </div>
     {% endif %}
 
   </div>
 </section>
+
+<style>
+  .categories-index .folder-group[data-open="false"] > .folder-parent .folder-chevron { transform: rotate(-90deg); }
+  .categories-index .folder-group[data-open="false"] > .folder-children { display: none; }
+  .categories-index .folder-children .folder-group { margin-left: 1rem; }
+  .categories-index .folder-child.post-item { display: flex; align-items: center; gap: .5rem; }
+</style>
+
+<script>
+(function () {
+  document.querySelectorAll('.categories-index .folder-parent').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var group = btn.parentElement;
+      var isOpen = group.getAttribute('data-open') === 'true';
+      group.setAttribute('data-open', isOpen ? 'false' : 'true');
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      var children = btn.nextElementSibling;
+      if (children && children.classList.contains('folder-children')) {
+        children.hidden = isOpen;
+      }
+    });
+  });
+})();
+</script>
