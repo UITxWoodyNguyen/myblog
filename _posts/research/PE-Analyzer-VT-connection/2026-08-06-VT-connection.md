@@ -123,12 +123,12 @@ Xây dựng `parse_VT_response(data, file_hash)` để bóc tách dữ liệu ph
     ```
 - **Step 4**: Return về một `VTResult`
 
-![alt text](image.png)
+![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzer-VT-connection/image.png?raw=true)
 
 Xây dựng `check_hash(file_hash, api_key, session)` nhằm thực hiện điều phối quá trình Send Request và xử lý HTTP Status Code. Quy trình cụ thể:
 
-![alt text](image-1.png)
+![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzer-VT-connection/image-1.png?raw=true)
 
 ### Kiểm tra Module
 
-![alt text](image-2.png)
+![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzer-VT-connection/image-2.png?raw=true)
