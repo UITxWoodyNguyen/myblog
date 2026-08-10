@@ -312,14 +312,14 @@ objdump -x pe_analyzer_lab_sample.exe | less
 
 - Kiểm tra EntryPoint và ImageBase:
 
-    ![alt text](image.png)
+    ![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzing-Process-Log-1/image.png?raw=true)
 
 - Kiểm tra số lượng Sections:
 
-    ![alt text](image-1.png)
+    ![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzing-Process-Log-1/image-1.png?raw=true)
 
 Đối chiếu kết quả phân tích Import Tables và DLL:
 
-![alt text](image-2.png)
+![alt text](https://github.com/UITxWoodyNguyen/myblog/blob/main/_posts/research/PE-Analyzing-Process-Log-1/image-2.png?raw=true)
 
 **KẾT QUẢ TRÙNG KHỚP 100%**
